@@ -1,4 +1,3 @@
-from curses import keyname
 import pygame
 import os
 
@@ -12,6 +11,7 @@ WHITE = (255,255,255)
 pygame.display.set_caption("tdgame")
 
 FPS = 60
+VEL = 5
 SPACESHIP_WIDTH, SPACESHIP_HEIGHT = 55,40
 
 YELLOW_SPACESHIP_IMAGE = pygame.image.load(os.path.join('Assets', 'spaceship_yellow.png'))
@@ -44,7 +44,13 @@ def main():
                 
         keys_pressed = pygame.key.get_pressed()
         if keys_pressed[pygame.K_a]: #left
-            
+            yellow.x -= VEL
+        if keys_pressed[pygame.K_d]: #right
+            yellow.x += VEL
+        if keys_pressed[pygame.K_w]: #up
+            yellow.y -= VEL
+        if keys_pressed[pygame.K_s]: #down
+            yellow.y += VEL
         
         draw_window(red,yellow)  
     pygame.quit()
